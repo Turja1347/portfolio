@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Turja Mondal - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2C4A2tY3s/kL6j8vY6nI81+Qz3T9PzF/FkQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        :root {
+            --primary-text-color: #E0E0FF;
+            --secondary-text-color: #C0C0E0;
+            --accent-color-1: #7B68EE;
+            --accent-color-2: #A060F0;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0F0F0F;
+            color: var(--primary-text-color);
+            font-size: 0.95rem;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        .background-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-color: #1A0033;
+            background-image:
+                radial-gradient(circle at 20% 30%, rgba(255, 0, 255, 0.4) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(0, 255, 255, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 50% 10%, rgba(128, 0, 128, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 10% 90%, rgba(0, 128, 128, 0.2) 0%, transparent 50%),
+                url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 0L100 25L100 75L50 100L0 75L0 25Z' fill='none' stroke='%23400080' stroke-width='1' opacity='0.3'/%3E%3C/svg%3E"),
+                url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='10' y='20' font-family='monospace' font-size='16' fill='%236000C0' opacity='0.15'%3E01010101%3C/text%3E%3Ctext x='100' y='120' font-family='monospace' font-size='16' fill='%236000C0' opacity='0.15'%3E10101010%3C/text%3E%3C/svg%3E"),
+                linear-gradient(to bottom, #1A0033, #0A001A);
+            background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, repeat, repeat, no-repeat;
+            background-size: 80% 80%, 80% 80%, 80% 80%, 80% 80%, auto, auto, cover;
+            background-position: var(--glow1-x) var(--glow1-y), var(--glow2-x) var(--glow2-y), var(--glow3-x) var(--glow3-y), var(--glow4-x) var(--glow4-y), top left, top left, center;
+            animation: moveGlow 20s infinite alternate ease-in-out;
+            --glow1-x: 20%; --glow1-y: 30%;
+            --glow2-x: 80%; --glow2-y: 70%;
+            --glow3-x: 50%; --glow3-y: 10%;
+            --glow4-x: 10%; --glow4-y: 90%;
+        }
+        @keyframes moveGlow {
+            0% {
+                --glow1-x: 20%; --glow1-y: 30%;
+                --glow2-x: 80%; --glow2-y: 70%;
+                --glow3-x: 50%; --glow3-y: 10%;
+                --glow4-x: 10%; --glow4-y: 90%;
+            }
+            25% {
+                --glow1-x: 25%; --glow1-y: 40%;
+                --glow2-x: 75%; --glow2-y: 60%;
+                --glow3-x: 55%; --glow3-y: 20%;
+                --glow4-x: 15%; --glow4-y: 80%;
+            }
+            50% {
+                --glow1-x: 30%; --glow1-y: 50%;
+                --glow2-x: 70%; --glow2-y: 50%;
+                --glow3-x: 60%; --glow3-y: 30%;
+                --glow4-x: 20%; --glow4-y: 70%;
+            }
+            75% {
+                --glow1-x: 25%; --glow1-y: 40%;
+                --glow2-x: 75%; --glow2-y: 60%;
+                --glow3-x: 55%; --glow3-y: 20%;
+                --glow4-x: 15%; --glow4-y: 80%;
+            }
+            100% {
+                --glow1-x: 20%; --glow1-y: 30%;
+                --glow2-x: 80%; --glow2-y: 70%;
+                --glow3-x: 50%; --glow3-y: 10%;
+                --glow4-x: 10%; --glow4-y: 90%;
+            }
+        }
+        .header-portfolio-text {
+            color: var(--accent-color-1);
+        }
+        .hero-name-text {
+            color: #FF69B4;
+        }
+        .hero-skill-highlight {
+            color: var(--accent-color-1);
+        }
+        .custom-button {
+            background-color: #8e2de2;
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 14px rgba(142, 45, 226, 0.4);
+        }
+        .custom-button:hover {
+            background-color: var(--accent-color-1);
+            transform: translateY(-2px);
+        }
+        .section-bg-dark {
+            background-color: rgba(15, 0, 30, 0.7);
+            color: var(--primary-text-color);
+            border-radius: 0.75rem;
+            margin-bottom: 2rem;
+            padding: 2rem;
+        }
+        .section-bg-darker {
+            background-color: rgba(10, 0, 20, 0.7);
+            color: var(--primary-text-color);
+            border-radius: 0.75rem;
+            margin-bottom: 2rem;
+            padding: 2rem;
+        }
+        .section-heading-color {
+            color: var(--accent-color-2);
+        }
+        .skill-card {
+            background-color: #1A1A1A;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+        }
+        .skill-card:hover {
+            background-color: #2A2A2A;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+        }
+        .skill-card.active {
+            background-color: #2A2A2A;
+            border-color: var(--accent-color-1);
+            box-shadow: 0 0 20px rgba(123, 104, 238, 0.6);
+        }
+        .skill-description {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
+            opacity: 0;
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--secondary-text-color);
+            width: 100%;
+        }
+        .skill-card.active .skill-description {
+            max-height: 100px;
+            opacity: 1;
+        }
+        .skill-card p {
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: var(--primary-text-color);
+            margin-left: 0;
+        }
+        .skill-card:hover p {
+            color: white;
+        }
+        .skill-card.active p {
+            color: #00FFFF;
+            font-weight: 600;
+            text-shadow: 0 0 8px rgba(0, 255, 255, 0.7), 0 0 15px rgba(0, 255, 255, 0.4);
+        }
+        .about-text-box {
+            background-color: rgba(26, 26, 26, 0.6);
+            border-radius: 0.75rem;
+            padding: 2.5rem;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid transparent;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            max-width: 48rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .about-text-box p {
+            font-size: 1.05rem;
+        }
+        .highlight-text {
+            color: #00FFFF;
+            font-weight: 600;
+            text-shadow: 0 0 8px rgba(0, 255, 255, 0.7), 0 0 15px rgba(0, 255, 255, 0.4);
+        }
+        .project-card {
+            background-color: #1A1A1A;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .project-card:hover {
+            background-color: #2A2A2A;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+        }
+        .project-card p {
+            font-size: 0.9rem;
+        }
+        .project-card-image {
+            width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+        .contact-form-container {
+            background-color: #1A1A1A;
+            border-radius: 0.75rem;
+            padding: 2.5rem;
+            max-width: 32rem;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            border: 1px solid #4A00E0;
+            position: relative;
+            overflow: hidden;
+        }
+        .contact-form-container input[type="text"],
+        .contact-form-container input[type="email"],
+        .contact-form-container textarea {
+            width: 100%;
+            padding: 0.75rem;
+            margin-top: 0.25rem;
+            margin-bottom: 1rem;
+            background-color: #2A2A2A;
+            border: 1px solid #4A00E0;
+            border-radius: 0.375rem;
+            color: var(--primary-text-color);
+            font-size: 0.9rem;
+            outline: none;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .contact-form-container input[type="text"]:focus,
+        .contact-form-container input[type="email"]:focus,
+        .contact-form-container textarea:focus {
+            border-color: #FF69B4;
+            box-shadow: 0 0 0 3px rgba(255, 105, 180, 0.3);
+        }
+        .contact-form-container label {
+            display: block;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--primary-text-color);
+            margin-bottom: 0.25rem;
+        }
+        .send-message-button {
+            background-color: #00FFFF;
+            color: #0F0F0F;
+            padding: 0.75rem 2rem;
+            border-radius: 9999px;
+            font-weight: 700;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 14px rgba(0, 255, 255, 0.4);
+            width: 100%;
+            cursor: pointer;
+        }
+        .send-message-button:hover {
+            background-color: #00E0E0;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(0, 255, 255, 0.6);
+        }
+        .navbar-menu {
+            display: none;
+            flex-direction: column;
+            width: 100%;
+            background-color: rgba(15, 0, 30, 0.95);
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .navbar-menu.active {
+            display: flex;
+        }
+        .navbar-menu a {
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .navbar-menu a:last-child {
+            border-bottom: none;
+        }
+        .hamburger-icon {
+            display: flex;
+            cursor: pointer;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 24px;
+            width: 30px;
+        }
+        .hamburger-icon span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary-text-color);
+            border-radius: 3px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        .hamburger-icon.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .hamburger-icon.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger-icon.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+        @media (max-width: 768px) {
+            .desktop-nav {
+                display: none;
+            }
+            .mobile-nav-container {
+                display: flex;
+            }
+        }
+        @media (min-width: 769px) {
+            .desktop-nav {
+                display: flex;
+            }
+            .mobile-nav-container {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <div class="background-container"></div>
+    <div id="root" class="min-h-screen flex flex-col relative z-0">
+        <header class="bg-gray-900 bg-opacity-80 backdrop-filter backdrop-blur-lg shadow-sm py-4 px-6 fixed w-full z-20">
+            <div class="container mx-auto flex justify-between items-center flex-wrap">
+                <a href="#home" class="text-2xl font-bold header-portfolio-text">TM</a>
+                <div class="md:hidden flex items-center">
+                    <button id="hamburger-btn" class="text-white focus:outline-none">
+                        <div class="hamburger-icon" id="hamburger-icon">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </button>
+                </div>
+                <ul class="desktop-nav md:flex space-x-6 hidden">
+                    <li><a href="#home" class="hover:text-purple-400 transition duration-300">Home</a></li>
+                    <li><a href="#about" class="hover:text-purple-400 transition duration-300">About</a></li>
+                    <li><a href="#skills" class="hover:text-purple-400 transition duration-300">Skills</a></li>
+                    <li><a href="#projects" class="hover:text-purple-400 transition duration-300">Projects</a></li>
+                    <li><a href="#contact" class="hover:text-purple-400 transition duration-300">Contact</a></li>
+                </ul>
+                <div id="mobile-menu" class="navbar-menu mt-4 md:hidden">
+                    <a href="#home" class="hover:bg-gray-700 transition duration-300">Home</a>
+                    <a href="#about" class="hover:bg-gray-700 transition duration-300">About</a>
+                    <a href="#skills" class="hover:bg-gray-700 transition duration-300">Skills</a>
+                    <a href="#projects" class="hover:bg-gray-700 transition duration-300">Projects</a>
+                    <a href="#contact" class="hover:bg-gray-700 transition duration-300">Contact</a>
+                </div>
+            </div>
+        </header>
+        
+        <section id="home" class="flex-grow flex items-center justify-center text-white py-20 pt-32 relative z-10 min-h-screen">
+            <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-center text-center md:text-left">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <p class="text-xl md:text-2xl font-medium mb-2">Hello, I am</p>
+                    <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-4 leading-tight hero-name-text">Turja Mondal</h1>
+                    <p class="text-2xl md:text-3xl font-semibold mb-6">an aspiring <span id="typing-skill" class="hero-skill-highlight"></span></p>
+                    <p class="text-lg md:text-xl mb-8 max-w-lg">
+                        Final-year B.Tech student with a strong engineering foundation and hands-on experience in software development—adept in Python, SQL, and modern web technologies.
+                    </p>
+                    <div class="flex justify-center md:justify-start space-x-6 mb-8">
+                        <a href="https://www.linkedin.com/in/turjamondal01/" target="_blank" class="text-[var(--primary-text-color)] hover:text-purple-400 transition duration-300">
+                            <!-- LinkedIn Icon SVG -->
+                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        </a>
+                        <a href="https://github.com/Turja1347" target="_blank" class="text-[var(--primary-text-color)] hover:text-purple-400 transition duration-300">
+                            <!-- GitHub Icon SVG -->
+                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.47.087.68-.217.68-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.004.07 1.531 1.032 1.531 1.032.892 1.529 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.953 0-1.096.392-1.988 1.03-2.69-.104-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.098 2.65.637.702 1.03 1.594 1.03 2.69 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.209.576.685.479C21.133 20.217 24 16.46 24 12.017 24 6.484 19.522 2 14 2h-2z" clip-rule="evenodd" /></svg>
+                        </a>
+                    </div>
+                    
+                    <a href="#about" class="custom-button">more about me</a>
+                </div>
+                <div class="md:w-1/2 flex justify-center md:justify-end mt-8 md:mt-0">
+                    <img src="profile_photo.png" alt="Turja Mondal" class="w-64 h-64 md:w-80 md:h-80 rounded-full object-cover shadow-xl border-4 border-purple-500 transform hover:scale-105 transition duration-300"
+                        onerror="this.onerror=null; this.src='https://placehold.co/320x320/cccccc/333333?text=TM'; this.alt='Turja Mondal Placeholder';">
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="py-20 section-bg-dark">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-4xl font-bold section-heading-color mb-8">About Me</h2>
+                <div class="about-text-box text-lg leading-relaxed">
+                    <p>
+                        I am a final-year B.Tech student with a robust foundation in Electronics and Communication Engineering from JIS College of Engineering, Kalyani. I am passionate about software development and have a proven track record in using modern tools to deliver real-world applications.
+                    </p>
+                    <p class="mt-4">
+                        My technical expertise includes <span class="highlight-text">Python</span>, <span class="highlight-text">MySQL</span>, <span class="highlight-text">C</span>, <span class="highlight-text">HTML5</span>, <span class="highlight-text">CSS3</span>, and <span class="highlight-text">JavaScript</span>. Additionally, I have worked on desktop applications using <span class="highlight-text">Tkinter</span> and web apps with <span class="highlight-text">Streamlit</span>.
+                    </p>
+                    <p class="mt-4">
+                        I am also proficient in utilizing modern collaboration tools such as VS Code and GitHub and have earned certifications in Python, SQL, DSA, and AWS Academy Cloud Foundations.
+                    </p>
+                    <p class="mt-4">
+                        Languages: English, Bengali, Hindi.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="py-20 section-bg-darker">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-4xl font-bold section-heading-color mb-8">Technical Skills</h2>
+                <div class="flex flex-col items-center gap-6 max-w-2xl mx-auto">
+                    <div class="skill-card w-full">
+                        <p>Python</p>
+                        <div class="skill-description">
+                            Extensive experience in Python for scripting, data analysis, and developing desktop and web applications.
+                        </div>
+                    </div>
+                    <div class="skill-card w-full">
+                        <p>MySQL</p>
+                        <div class="skill-description">
+                            Proficient in database design, querying, and management using SQL, including creating and managing schemas, tables, and relationships.
+                        </div>
+                    </div>
+                    <div class="skill-card w-full">
+                        <p>C</p>
+                        <div class="skill-description">
+                            Strong grasp of C programming fundamentals, including data structures and algorithms (DSA), for efficient problem-solving.
+                        </div>
+                    </div>
+                    <div class="skill-card w-full">
+                        <p>HTML5 & CSS3</p>
+                        <div class="skill-description">
+                            Skilled in building responsive web interfaces using semantic HTML and modern CSS, including frameworks like Tailwind CSS.
+                        </div>
+                    </div>
+                    <div class="skill-card w-full">
+                        <p>JavaScript</p>
+                        <div class="skill-description">
+                            Capable of developing interactive front-end features and handling DOM manipulation to create dynamic user experiences.
+                        </div>
+                    </div>
+                    <div class="skill-card w-full">
+                        <p>Data Structures and Algorithms (DSA)</p>
+                        <div class="skill-description">
+                            Solid understanding of fundamental data structures (arrays, lists, trees) and algorithms for writing efficient and optimized code.
+                        </div>
+                    </div>
+                    <div class="skill-card w-full">
+                        <p>Git & GitHub</p>
+                        <div class="skill-description">
+                            Experience with version control systems, including branching, merging, and collaborative development using Git and GitHub.
+                        </div>
+                    </div>
+                    <div class="skill-card w-full">
+                        <p>Tkinter</p>
+                        <div class="skill-description">
+                            Developed desktop applications with intuitive graphical user interfaces for a smooth user experience.
+                        </div>
+                    </div>
+                    <div class="skill-card w-full">
+                        <p>Streamlit</p>
+                        <div class="skill-description">
+                            Experienced in building data-centric and interactive web applications for data visualization and machine learning models.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="py-20 section-bg-dark">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-4xl font-bold section-heading-color mb-8">Projects</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto justify-items-center">
+                    
+                    <div class="project-card">
+                        <img src="/fitnexis_screenshot.png" alt="FitNexis Project Screenshot" class="project-card-image"
+                            onerror="this.onerror=null; this.src='https://placehold.co/400x250/333333/cccccc?text=Screenshot+Unavailable'; this.alt='Project Screenshot Unavailable';">
+                        <h3 class="text-2xl font-semibold text-purple-400 mb-2">FitNexis: AI-Powered Smart Fitness & Diet Planner</h3>
+                        <ul class="list-disc list-inside text-sm space-y-1 mb-4">
+                            <li>Developed a personalized fitness and diet planning tool using Streamlit.</li>
+                            <li>Integrated Gemini AI for tailored workout and meal plan generation.</li>
+                            <li>Implemented real-time BMI, BMR, and TDEE calculations with PDF export.</li>
+                        </ul>
+                        <p class="text-sm font-medium text-[var(--secondary-text-color)] mb-4">
+                            Tech Stack: <span class="highlight-text">Python</span>, <span class="highlight-text">Streamlit</span>, <span class="highlight-text">Google Gemini API</span>, <span class="highlight-text">ReportLab</span>
+                        </p>
+                        <div class="flex space-x-4">
+                            <a href="https://github.com/Turja1347/FitNexis" target="_blank" class="text-purple-400 hover:text-purple-200 font-medium flex items-center">
+                                <i class="fab fa-github mr-2"></i>
+                                GitHub
+                            </a>
+                            <a href="https://fitnexis-tm.streamlit.app/" target="_blank" class="text-purple-400 hover:text-purple-200 font-medium flex items-center">
+                                <i class="fas fa-external-link-alt mr-2"></i>
+                                Live App
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="shieldmail_screenshot.png" alt="ShieldMail Project Screenshot" class="project-card-image"
+                            onerror="this.onerror=null; this.src='https://placehold.co/400x250/333333/cccccc?text=Screenshot+Unavailable'; this.alt='Project Screenshot Unavailable';">
+                        <h3 class="text-2xl font-semibold text-purple-400 mb-2">ShieldMail: Spam Mail & SMS Detector</h3>
+                        <ul class="list-disc list-inside text-sm space-y-1 mb-4">
+                            <li>Developed an AI-based spam classification tool using Multinomial Naive Bayes.</li>
+                            <li>Achieved 98% accuracy through robust text preprocessing and feature extraction.</li>
+                            <li>Designed an interactive Streamlit interface for real-time prediction.</li>
+                        </ul>
+                        <p class="text-sm font-medium text-[var(--secondary-text-color)] mb-4">
+                            Tech Stack: <span class="highlight-text">Python</span>, <span class="highlight-text">scikit-learn</span>, <span class="highlight-text">Streamlit</span>
+                        </p>
+                        <div class="flex space-x-4">
+                            <a href="https://github.com/Turja1347/ShieldMail" target="_blank" class="text-purple-400 hover:text-purple-200 font-medium flex items-center">
+                                <i class="fab fa-github mr-2"></i>
+                                GitHub
+                            </a>
+                            <a href="https://shieldmail-tm.streamlit.app/" target="_blank" class="text-purple-400 hover:text-purple-200 font-medium flex items-center">
+                                <i class="fas fa-external-link-alt mr-2"></i>
+                                Live App
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="/campusmanager_screenshot.png" alt="CampusManager Project Screenshot" class="project-card-image"
+                            onerror="this.onerror=null; this.src='https://placehold.co/400x250/333333/cccccc?text=Screenshot+Unavailable'; this.alt='Project Screenshot Unavailable';">
+                        <h3 class="text-2xl font-semibold text-purple-400 mb-2">CampusManager: Student Management System</h3>
+                        <ul class="list-disc list-inside text-sm space-y-1 mb-4">
+                            <li>Built a CRUD-based desktop application using Tkinter.</li>
+                            <li>Integrated MySQL for persistent student record management.</li>
+                            <li>Designed with usability in mind for non-technical users.</li>
+                        </ul>
+                        <p class="text-sm font-medium text-[var(--secondary-text-color)] mb-4">
+                            Tech Stack: <span class="highlight-text">Python</span>, <span class="highlight-text">MySQL</span>, <span class="highlight-text">Tkinter</span>
+                        </p>
+                        <div class="flex space-x-4">
+                            <a href="https://github.com/Turja1347/CampusManager-Student-Management-System" target="_blank" class="text-purple-400 hover:text-purple-200 font-medium flex items-center">
+                                <i class="fab fa-github mr-2"></i>
+                                GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-20 section-bg-darker">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-4xl font-bold section-heading-color mb-8">Contact</h2>
+                <div class="contact-form-container">
+                    <form action="mailto:turjamondal1437@gmail.com" method="post" enctype="text/plain">
+                        <div class="mb-4 text-left">
+                            <label for="name" class="block text-sm font-bold mb-2">Name</label>
+                            <input type="text" id="name" name="name" placeholder="Your Name" class="w-full">
+                        </div>
+                        <div class="mb-4 text-left">
+                            <label for="email" class="block text-sm font-bold mb-2">Email</label>
+                            <input type="email" id="email" name="email" placeholder="Your Email" class="w-full">
+                        </div>
+                        <div class="mb-6 text-left">
+                            <label for="message" class="block text-sm font-bold mb-2">Message</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Your Message" class="w-full"></textarea>
+                        </div>
+                        <div class="flex items-center justify-center">
+                            <button type="submit" class="send-message-button">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="mt-8">
+                    <p>Location: Kolkata, West Bengal</p>
+                    <p>Email: <a href="mailto:turjamondal1437@gmail.com" class="hover:text-purple-400 transition duration-300">turjamondal1437@gmail.com</a></p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="bg-gray-900 text-[var(--secondary-text-color)] py-8 text-center">
+            <div class="container mx-auto px-4">
+                <p>&copy; 2025 Turja Mondal. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Skill Toggling for Skill Cards
+        document.addEventListener('DOMContentLoaded', () => {
+            const skillCards = document.querySelectorAll('.skill-card');
+            skillCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    card.classList.toggle('active');
+                    const description = card.querySelector('.skill-description');
+                    if (description) {
+                        if (card.classList.contains('active')) {
+                            description.style.maxHeight = description.scrollHeight + "px";
+                            description.style.opacity = 1;
+                        } else {
+                            description.style.maxHeight = "0";
+                            description.style.opacity = 0;
+                        }
+                    }
+                    // Ensure only one card is active at a time.
+                    skillCards.forEach(otherCard => {
+                        if (otherCard !== card && otherCard.classList.contains('active')) {
+                            otherCard.classList.remove('active');
+                            const otherDesc = otherCard.querySelector('.skill-description');
+                            if (otherDesc) {
+                                otherDesc.style.maxHeight = "0";
+                                otherDesc.style.opacity = 0;
+                            }
+                        }
+                    });
+                });
+            });
+            
+            // Typing Animation in Hero Section
+            const typingElement = document.getElementById('typing-skill');
+            const skills = ["Software Engineer", "Developer", "Programmer", "Tech Enthusiast"];
+            let skillIndex = 0, charIndex = 0, isDeleting = false;
+            const typingSpeed = 100, deletingSpeed = 50, pauseBeforeDelete = 1500, pauseBeforeType = 500;
+            
+            function typeWriter() {
+                if (!typingElement) return; // Exit if element doesn't exist
+                
+                const currentSkill = skills[skillIndex];
+                if (isDeleting) {
+                    typingElement.textContent = currentSkill.substring(0, charIndex - 1);
+                    charIndex--;
+                } else {
+                    typingElement.textContent = currentSkill.substring(0, charIndex + 1);
+                    charIndex++;
+                }
+                
+                let currentSpeed = isDeleting ? deletingSpeed : typingSpeed;
+                if (!isDeleting && charIndex === currentSkill.length) {
+                    currentSpeed = pauseBeforeDelete;
+                    isDeleting = true;
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    skillIndex = (skillIndex + 1) % skills.length;
+                    currentSpeed = pauseBeforeType;
+                }
+                setTimeout(typeWriter, currentSpeed);
+            }
+            typeWriter();
+
+            // Mobile menu functionality
+            const hamburgerBtn = document.getElementById('hamburger-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const hamburgerIcon = document.getElementById('hamburger-icon');
+            
+            hamburgerBtn.addEventListener('click', (event) => {
+                event.stopPropagation();
+                mobileMenu.classList.toggle('active');
+                hamburgerIcon.classList.toggle('active');
+            });
+
+            document.querySelectorAll('#mobile-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('active');
+                    hamburgerIcon.classList.remove('active');
+                });
+            });
+
+            document.addEventListener('click', (event) => {
+                const isClickInside = hamburgerBtn.contains(event.target) || mobileMenu.contains(event.target);
+                if (!isClickInside && mobileMenu.classList.contains('active')) {
+                    mobileMenu.classList.remove('active');
+                    hamburgerIcon.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
